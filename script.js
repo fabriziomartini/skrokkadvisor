@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const recensioneHTML = `
                 <div class="recensione">
-					${nomeHTML}
+		<p>${nomeHTML}</p>
                     <p><strong>Nome del ristorante:</strong> ${recensione['Ristorante']}</p>
                     <p><strong>Valutazione:</strong>  ${stelleHTML}</p>
                     <p><strong>Recensione:</strong> ${recensione['Recensione']}</p>
