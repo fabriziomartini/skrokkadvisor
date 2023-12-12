@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -37,12 +38,22 @@ header p {
     margin: 0;
 }
 
+/* Footer Styles */
 footer {
     background-color: #3498db;
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: fixed;
-    bottom: 0;
     width: 100%;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+    body {
+        padding-bottom: 0px; /* Adjust the value as needed */
+    }
+
+    footer {
+        position: relative;
+    }
 }
