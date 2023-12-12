@@ -33,9 +33,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     stelleHTML += '★'; // Carattere stella unicode
                 }
             }
-
+        const nomeRecensore = recensione['Nome'];
+        const nomeHTML = nomeRecensore ? `<p><strong>Nome:</strong> ${nomeRecensore}</p>` : '';
             const recensioneHTML = `
                 <div class="recensione">
+                    ${nomeHTML}
                     <p><strong>Nome del ristorante:</strong> ${recensione['Ristorante']}</p>
                     <p><strong>Valutazione:</strong>  ${stelleHTML}</p>
                     <p><strong>Recensione:</strong> ${recensione['Recensione']}</p>
