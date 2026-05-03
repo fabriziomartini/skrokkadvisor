@@ -306,6 +306,29 @@ main {
 .recensione-stelle { color: var(--gold); font-size: 12px; letter-spacing: 1px; flex-shrink: 0; }
 .recensione-testo { font-size: 14px; line-height: 1.7; color: #5A4A2A; font-style: italic; }
 
+/* Allineamento nome e data */
+.recensore-info-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+/* Stile della data */
+.recensione-data {
+    font-size: 10px;
+    color: var(--muted-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
+
+/* Piccolo aggiustamento per il nome se necessario */
+.recensore-nome {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+}
+
 /* --- Empty state --- */
 .empty-state { text-align: center; padding: 60px 24px; color: var(--muted); font-size: 15px; }
 
