@@ -1,35 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-<!-- START Meta tag SEO -->
     <meta charset="UTF-8">
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Skrokkadvisor: Esplora cene scroccate con autentiche recensioni. Consigli, esperienze e ricette per cene speciali senza spendere troppo. Buon cibo, amicizia e allegria.">
+    <meta name="description" content="Skrokkadvisor: la guida definitiva alle cene scroccate. Recensioni autentiche, esperienze vere, consigli dal campo.">
     <meta name="keywords" content="scroccare, cena, amici, recensioni">
-    <meta name="author" content="Fabrizio Martini"> 
+    <meta name="author" content="Fabrizio Martini">
     <meta name="google-site-verification" content="4xTznp10QzAwT82czKp-Do2EnXkUJ9l4GRL2M4t2F8I" />
-<!-- END Meta tag SEO  --> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skrokkadvisor - Recensioni di Cene Scroccate</title>
+    <title>Skrokkadvisor — Recensioni di Cene Scroccate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <header>
-        <h1>Skrokkadvisor</h1>
-        <p>Esplora le migliori recensioni</p>
-        <nav>
-            <ul>
-                <li><a href="https://forms.gle/H1vMaxYNfjZg5fGw5" target="_blank">Invia la tua recensione</a></li>
-            </ul>
-        </nav>
+        <div class="header-inner">
+            <div class="logo-wrap">
+                <h1 class="logo-main">Skrokkadvisor</h1>
+                <span class="logo-sub">Recensioni di cene scroccate</span>
+            </div>
+            <nav>
+                <a href="https://forms.gle/H1vMaxYNfjZg5fGw5" target="_blank" class="cta-btn">+ Invia recensione</a>
+            </nav>
+        </div>
     </header>
 
-    <section id="recensioni-container">
-        <!-- Le recensioni verranno visualizzate qui dinamicamente tramite JavaScript -->
+    <section class="hero">
+        <h2 class="hero-title">La guida del<br><em>parassite gourmet</em></h2>
+        <div class="hero-divider"></div>
+        <p class="hero-sub">Le migliori cene scroccate, recensite con onestà spietata</p>
     </section>
 
+    <div class="filters-bar">
+        <button class="filter-tag active" data-stars="0">Tutte</button>
+        <button class="filter-tag" data-stars="5">★★★★★</button>
+        <button class="filter-tag" data-stars="4">★★★★</button>
+        <button class="filter-tag" data-stars="3">★★★</button>
+        <button class="filter-tag" data-stars="2">★★</button>
+        <button class="filter-tag" data-stars="1">★</button>
+    </div>
+
+    <main>
+        <div class="stats-bar" id="stats-bar">
+            <span id="recensioni-count">— recensioni</span>
+        </div>
+
+        <div class="loading-state" id="loading-state">
+            <div class="spinner"></div>
+            <p>Caricamento recensioni…</p>
+        </div>
+
+        <section id="recensioni-container" class="cards-grid">
+            <!-- Recensioni caricate dinamicamente -->
+        </section>
+
+        <div class="empty-state" id="empty-state" style="display:none">
+            <p>Nessuna recensione trovata.</p>
+        </div>
+    </main>
+
     <footer>
-        <p>Realizzato da FM</p>
+        <p>Realizzato da <strong>FM</strong> · Skrokkadvisor</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
