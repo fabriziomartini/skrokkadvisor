@@ -23,7 +23,7 @@
                 <span class="logo-sub">Recensioni di cene scroccate</span>
             </div>
             <nav>
-                <a href="https://forms.gle/H1vMaxYNfjZg5fGw5" target="_blank" class="cta-btn">+ Invia recensione</a>
+                <a href="recensisci.html" class="cta-btn">+ Invia recensione</a>
             </nav>
         </div>
     </header>
@@ -34,27 +34,29 @@
         <p class="hero-sub">Le migliori cene scroccate, recensite con onestà spietata</p>
     </section>
 
-    <div class="filters-bar">
-        <button class="filter-tag active" data-stars="0">Tutte</button>
-        <button class="filter-tag" data-stars="5">★★★★★</button>
-        <button class="filter-tag" data-stars="4">★★★★</button>
-        <button class="filter-tag" data-stars="3">★★★</button>
-        <button class="filter-tag" data-stars="2">★★</button>
-        <button class="filter-tag" data-stars="1">★</button>
+
+    <div class="toolbar">
+        <div class="stats-bar">
+            <span id="stats-text">Caricamento…</span>
+        </div>
+        <div class="sort-wrap">
+            <label for="sort-select" class="sort-label">Ordina per</label>
+            <select id="sort-select" class="sort-select">
+                <option value="media">Valutazione media</option>
+                <option value="numero">Numero di recensioni</option>
+                <option value="nome">Nome A→Z</option>
+            </select>
+        </div>
     </div>
 
     <main>
-        <div class="stats-bar" id="stats-bar">
-            <span id="recensioni-count">— recensioni</span>
-        </div>
-
         <div class="loading-state" id="loading-state">
             <div class="spinner"></div>
-            <p>Caricamento recensioni…</p>
+            <p>Caricamento ristoranti…</p>
         </div>
 
-        <section id="recensioni-container" class="cards-grid">
-            <!-- Recensioni caricate dinamicamente -->
+        <section id="ristoranti-container" class="ristoranti-list">
+            <!-- Ristoranti caricati dinamicamente -->
         </section>
 
         <div class="empty-state" id="empty-state" style="display:none">
