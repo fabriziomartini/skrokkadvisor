@@ -119,24 +119,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Recensioni nel pannello
         const recensioniHTML = r.recensioni.map(function (rec) {
-            const nome     = rec['Nome'] || 'Anonimo';
-            const voto     = parseInt(rec['Valutazione']) || 0;
-            const testo    = rec['Recensione'] || '';
-            const initials = getInitials(nome);
-            const stelle   = '★'.repeat(Math.min(voto, 5));
+    const nome     = rec['Nome'] || 'Anonimo';
+    const voto     = parseInt(rec['Valutazione']) || 0;
+    const testo    = rec['Recensione'] || '';
+    
+    // Recupera la data dalla colonna A (solitamente la prima chiave dell'oggetto)
+    const dataRaw  = rec['Informazioni cronologiche'] || Object.values(rec)[0] || '';
+    const dataFmt  = formatDate(dataRaw);
+    
+    const initials = getInitials(nome);
+    const stelle   = '★'.repeat(Math.min(voto, 5));
 
-            return `
-                <div class="recensione-item">
-                    <div class="recensione-top">
-                        <div class="recensore-wrap">
-                            <div class="avatar">${esc(initials)}</div>
-                            <span class="recensore-nome">${esc(nome)}</span>
-                        </div>
-                        ${stelle ? `<span class="recensione-stelle">${stelle}</span>` : ''}
+    return `
+        <div class="recensione-item">
+            <div class="recensione-top">
+                <div class="recensore-wrap">
+                    <div class="avatar">${esc(initials)}</div>
+                    <div class="recensore-info-text">
+                        <span class="recensore-nome">${esc(nome)}</span>
+                        ${dataFmt ? `<span class="recensione-data">${esc(dataFmt)}</span>` : ''}
                     </div>
-                    ${testo ? `<p class="recensione-testo">"${esc(testo)}"</p>` : ''}
-                </div>`;
-        }).join('');
+                </div>
+                ${stelle ? `<span class="recensione-stelle">${stelle}</span>` : ''}
+            </div>
+            ${testo ? `<p class="recensione-testo">"${esc(testo)}"</p>` : ''}
+        </div>`;
+}).join('');
 
         card.innerHTML = `
             <div class="ristorante-header" role="button" aria-expanded="false">
@@ -194,4 +202,23 @@ document.addEventListener('DOMContentLoaded', function () {
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;');
     }
+
+    function formatDate(dateStr) {
+    if (!dateStr || typeof dateStr !== 'string') return '';
+    try {
+        // Estrae solo la parte della data (prima dello spazio)
+        const datePart = dateStr.split(' ')[0];
+        const [day, month, year] = datePart.split('/');
+        const date = new Date(year, month - 1, day);
+        
+        // Formato: 12 nov 2023
+        return date.toLocaleDateString('it-IT', { 
+            day: 'numeric', 
+            month: 'short', 
+            year: 'numeric' 
+        });
+    } catch (e) {
+        return dateStr; // Ritorna l'originale in caso di errore
+    }
+}
 });
