@@ -1,73 +1,369 @@
-/* General Styles */
-body {
-    font-family: 'Arial', sans-serif;
+/* ===========================
+   SKROKKADVISOR — Styles
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+/* --- Variables --- */
+:root {
+    --gold: #C9A84C;
+    --gold-light: #F0D898;
+    --gold-dim: #A0803A;
+    --dark: #1A1208;
+    --dark-2: #251C0D;
+    --cream: #FAF6EE;
+    --surface: #FFF9F0;
+    --border: #E8DFC8;
+    --border-dark: #3A2E1A;
+    --text: #3A2E1A;
+    --muted: #8A7A5A;
+    --muted-light: #B8A880;
+    --radius: 8px;
+    --radius-lg: 12px;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
 }
 
+/* --- Base --- */
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Header --- */
 header {
-    background-color: #3498db;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
+    background-color: var(--dark);
+    border-bottom: 1px solid var(--border-dark);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-header h1 {
-    margin: 0;
+.header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
-header p {
-    margin-top: 5px;
-    font-size: 1.2em;
+.logo-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-#recensioni-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.logo-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: -0.3px;
+    line-height: 1;
 }
 
-.recensione {
-    margin-bottom: 20px;
+.logo-sub {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 300;
 }
 
-.recensione p {
-    margin: 0;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #3498db;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-}
-/* Add the following CSS for styling the review submission link/button */
-nav ul li a {
+.cta-btn {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #2980b9;
-    color: #fff;
+    background-color: var(--gold);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 9px 20px;
+    border-radius: var(--radius);
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
-nav ul li a:hover {
-    background-color: #2980b9;
+.cta-btn:hover {
+    background-color: var(--gold-light);
+    transform: translateY(-1px);
 }
 
-/* Responsive Styles */
-@media only screen and (max-width: 600px) {
-    body {
-        padding-bottom: 0px; /* Adjust the value as needed */
+/* --- Hero --- */
+.hero {
+    background-color: var(--dark);
+    text-align: center;
+    padding: 48px 24px 52px;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 52px);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--gold);
+}
+
+.hero-divider {
+    width: 48px;
+    height: 1px;
+    background-color: var(--gold);
+    margin: 20px auto;
+    opacity: 0.6;
+}
+
+.hero-sub {
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    font-weight: 300;
+}
+
+/* --- Filters --- */
+.filters-bar {
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.filter-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+}
+
+.filter-tag:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold-dim);
+}
+
+.filter-tag.active {
+    background-color: var(--dark);
+    color: var(--gold);
+    border-color: var(--dark);
+}
+
+/* --- Main content --- */
+main {
+    flex: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 24px 48px;
+}
+
+.stats-bar {
+    padding: 16px 0 8px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+
+/* --- Loading state --- */
+.loading-state {
+    text-align: center;
+    padding: 60px 24px;
+    color: var(--muted);
+}
+
+.spinner {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--border);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --- Cards Grid --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+}
+
+/* --- Review Card --- */
+.card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation: fadeIn 0.3s ease both;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 18, 8, 0.08);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.restaurant-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+}
+
+.stars {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.reviewer-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 12px;
+}
+
+.avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--dark);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 500;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+}
+
+.reviewer-name {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.card-divider {
+    height: 1px;
+    background-color: var(--border);
+    margin-bottom: 14px;
+}
+
+.review-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #5A4A2A;
+    font-style: italic;
+}
+
+/* --- Empty state --- */
+.empty-state {
+    text-align: center;
+    padding: 60px 24px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark);
+    color: var(--muted);
+    text-align: center;
+    padding: 18px 24px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    border-top: 1px solid var(--border-dark);
+    margin-top: auto;
+}
+
+footer strong {
+    color: var(--gold);
+    font-weight: 500;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+    .header-inner {
+        padding: 16px 20px;
     }
 
-    footer {
-        position: relative;
+    .logo-main {
+        font-size: 20px;
+    }
+
+    .hero {
+        padding: 36px 20px 40px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 0 16px 40px;
+    }
+
+    .filters-bar {
+        padding: 12px 16px;
     }
 }
